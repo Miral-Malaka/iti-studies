@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlTag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITI - Independent Thought Institute For Strategic Studies</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Cairo & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Cairo', 'Inter', sans-serif; transition: all 0.3s ease; }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        /* تأثير التعديل المرئي */
+        .admin-editable:focus {
+            outline: 2px dashed #f59e0b !important;
+            background-color: rgba(245, 158, 11, 0.1);
+            padding: 2px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header / Navbar (مطابق للصورة تماماً) -->
+    <header class="bg-[#090d16] text-white sticky top-0 z-50 border-b border-slate-900 shadow-lg py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            
+            <!-- أزرار التحكم (اليسار في العربي) -->
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <button onclick="toggleLanguage()" class="border border-slate-700 hover:bg-slate-800 text-xs px-3 py-1.5 rounded transition flex items-center gap-1">
+                    <i class="fa-solid fa-earth-americas text-slate-400"></i> <span id="langBtnText">English</span>
+                </button>
+                <button onclick="openAdminDashboard()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-3 py-1.5 rounded text-xs transition flex items-center gap-1">
+                    <i class="fa-solid fa-gears"></i> <span>لوحة التحكم الشاملة CMS</span>
+                </button>
+            </div>
+
+            <!-- أزرار القائمة (الوسط) -->
+            <nav class="hidden md:flex items-center space-x-6 space-x-reverse text-sm font-medium" id="mainNav">
+                <!-- الروابط تتولد ديناميكياً لتسمح لك بالإضافة والحذف -->
+            </nav>
+            
+            <!-- الشعار والهوية (اليمين في العربي) -->
+            <div class="flex items-center space-x-3 space-x-reverse cursor-pointer" onclick="navigateTo('home')">
+                <div class="text-left md:text-right">
+                    <h1 class="text-md font-bold tracking-wide leading-tight">ITI</h1>
+                    <p class="text-[10px] text-slate-400">Strategic Studies</p>
+                </div>
+                <img src="WhatsApp Image 2026-06-17 at 10.07.51 PM.jpeg" alt="ITI Logo" class="w-10 h-10 object-cover rounded bg-white p-0.5 shadow-md">
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Dynamic Content Container -->
+    <main class="flex-grow" id="pagesContainer">
+        <!-- يتم بناء محتوى الصفحات والبطاقة البيضاء هنا ديناميكياً وبنفس الاستايل تماماً -->
+    </main>
+
+    <!-- === 🛠️ لوحة التحكم الشاملة الموحدة (مخفية تفتح عند الضغط على الزر الأصفر) === -->
+    <section id="cmsDashboard" class="fixed inset-0 bg-slate-950/95 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-4xl rounded-xl shadow-2xl p-6 max-h-[90vh] overflow-y-auto text-slate-900">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 class="text-lg font-bold text-slate-800"><i class="fa-solid fa-screwdriver-wrench text-amber-500"></i> لوحة الإدارة والتحكم الكامل بالموقع</h3>
+                <button onclick="closeAdminDashboard()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+            </div>
+
+            <!-- قفل الأمان -->
+            <div id="cmsAuthZone" class="py-4 text-center max-w-sm mx-auto">
+                <p class="text-xs text-gray-600 mb-2">أدخل الرقم السري للتحكم الكامل:</p>
+                <input type="password" id="cmsPasswordInput" class="w-full p-2 border rounded mb-3 text-center font-mono text-sm" placeholder="••••••••">
+                <button onclick="verifyCmsAuth()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-2 rounded text-xs w-full">دخول</button>
+            </div>
+
+            <!-- مساحة التحكم الشاملة -->
+            <div id="cmsWorkspace" class="hidden space-y-6">
+                <!-- تصدير الكود للـ GitHub -->
+                <div class="bg-amber-50 p-4 rounded-lg border border-amber-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+                    <div>
+                        <h4 class="font-bold text-amber-950">💾 حفظ وتصدير العمل بالكامل</h4>
+                        <p class="text-gray-700 mt-1">عند تعديل أي شيء، إضافة صفحة، أو نشر بحث، اضغط تصدير واستبدل الملف في GitHub.</p>
+                    </div>
+                    <button onclick="exportFullEngineCode()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded shadow shrink-0">تصدير الكود المحدث</button>
+                </div>
+
+                <!-- التبويبات -->
+                <div class="flex border-b text-xs font-bold gap-2">
+                    <button onclick="switchCmsTab('pagesTab')" id="btn-pagesTab" class="cms-tab-btn px-4 py-2 border-b-2 border-amber-500 text-amber-600">📁 إدارة الصفحات</button>
+                    <button onclick="switchCmsTab('researchTab')" id="btn-researchTab" class="cms-tab-btn px-4 py-2 text-gray-500">🔬 إدارة الأبحاث والمنشورات</button>
+                </div>
+
+                <!-- تبويب الصفحات -->
+                <div id="tab-pagesTab" class="cms-tab-content space-y-4 text-xs">
+                    <div class="border p-4 rounded bg-slate-50 grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-bold mb-1">معرف الصفحة (إنجليزي بدون مسافات):</label>
+                            <input type="text" id="newPageId" class="w-full p-2 border rounded">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-1">اسم الصفحة في المنيو (عربي):</label>
+                            <input type="text" id="newPageMenuAr" class="w-full p-2 border rounded">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-1">Navbar Title (English):</label>
+                            <input type="text" id="newPageMenuEn" class="w-full p-2 border rounded">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-1">النص الترحيبي الأولي داخل البطاقة:</label>
+                            <input type="text" id="newPageContent" class="w-full p-2 border rounded">
+                        </div>
+                        <div class="md:col-span-2">
+                            <button onclick="createNewPageSystem()" class="bg-blue-600 text-white px-4 py-2 rounded font-bold">+ إنشاء وإضافة الصفحة</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-bold text-gray-600 mb-2">الصفحات النشطة حالياً (يمكنك حذف أي صفحة مخصصة):</h5>
+                        <div id="cmsPagesList" class="flex flex-wrap gap-2"></div>
+                    </div>
+                </div>
+
+                <!-- تبويب الأبحاث -->
+                <div id="tab-researchTab" class="cms-tab-content hidden space-y-4 text-xs">
+                    <div class="border p-4 rounded bg-slate-50 grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-bold mb-1">عنوان البحث (عربي):</label>
+                            <input type="text" id="resTitleAr" class="w-full p-2 border rounded">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-1">Research Title (English):</label>
+                            <input type="text" id="resTitleEn" class="w-full p-2 border rounded">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-1">اسم الباحث (عربي):</label>
+                            <input type="text" id="resAuthorAr" class="w-full p-2 border rounded">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-1">ملخص أو نص البحث:</label>
+                            <textarea id="resBodyAr" class="w-full p-2 border rounded h-12"></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <button onclick="createNewResearchSystem()" class="bg-amber-500 text-slate-950 font-bold px-4 py-2 rounded">+ نشر البحث في مستودع الأبحاث</button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto border rounded">
+                        <table class="w-full text-right text-xs text-gray-500 bg-white">
+                            <thead class="bg-slate-100 text-slate-700 font-bold">
+                                <tr>
+                                    <th class="p-2">العنوان</th>
+                                    <th class="p-2 text-center">حذف</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cmsResearchTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#090d16] text-slate-500 py-6 text-center text-xs border-t border-slate-900 mt-auto">
+        <p>© 2026 Independent Thought Institute (ITI). All rights reserved.</p>
+    </footer>
+
+    <!-- Core CMS Engine -->
+    <script>
+        let currentLang = 'ar'; // البدء باللغة العربية كما بالصورة
+        let isAdminAuthenticated = false;
+
+        let sitePages = JSON.parse(localStorage.getItem('iti_site_pages')) || [
+            {
+                id: "home",
+                menuEn: "الرئيسية", // مدمج للتنقل المباشر
+                menuAr: "الرئيسية",
+                titleEn: "Independent Thought Institute For Strategic Studies (ITI)",
+                titleAr: "معهد الفكر المستقل للدراسات الاستراتيجية (ITI)",
+                bodyEn: "The Independent Thought Institute for Strategic Studies (ITI) is a non-profit, non-partisan think tank dedicated to improvement of the security and governance transitions based in Gaza, Palestine.",
+                bodyAr: "مؤسسة فكرية فلسطينية دولية مستقلة وغير ربحية مكرسة لتحسين انتقالات الأمن والحوكمة في الدول المستقرة والهشة والمتأثرة بالصراعات في فلسطين. يتخذ المعهد من غزة مقراً له، ويحافظ على شبكة عالمية متعددة التخصصات من الباحثين والممارسين والأكاديميين المتخصصين في مجال السلم والأمن الدوليين. يسعى المعهد لتعزيز كفاءة مساعدات المانحين ودعم برامج قطاع الأمن من خلال البحوث، والفعاليات، والتدريب، وتقديم المشورة السياسية المباشرة للحكومات العالمية."
+            },
+            {
+                id: "about",
+                menuEn: "About ITI",
+                menuAr: "عن المعهد",
+                titleEn: "About Independent Thought Institute",
+                titleAr: "عن معهد الفكر المستقل للدراسات الاستراتيجية",
+                bodyEn: "ITI research and policy works support regional transformations and strategic planning.",
+                bodyAr: "يعمل المعهد على تقديم الدراسات العلمية الرصينة والأبحاث الاستراتيجية لدعم صناع القرار وإثراء الفكر الأكاديمي."
+            },
+            {
+                id: "contact",
+                menuEn: "Contact Us",
+                menuAr: "اتصل بنا",
+                titleEn: "Contact Strategic Management",
+                titleAr: "الاتصال والتنسيق مع إدارة المعهد",
+                bodyEn: "Email: info@iti-studies.org | Gaza, Palestine",
+                bodyAr: "البريد الإلكتروني الرسمي: info@iti-studies.org | المقر الرئيسي: غزة، فلسطين."
+            }
+        ];
+
+        let scientificResearch = JSON.parse(localStorage.getItem('iti_research_data')) || [];
+
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            const target = document.getElementById(`section_${pageId}`);
+            if (target) target.classList.add('active');
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            renderEngine();
+        }
+
+        function switchCmsTab(tabId) {
+            document.querySelectorAll('.cms-tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.cms-tab-btn').forEach(el => el.className = 'cms-tab-btn px-4 py-2 text-gray-500');
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            document.getElementById(`btn-${tabId}`).className = 'cms-tab-btn px-4 py-2 border-b-2 border-amber-500 text-amber-600 font-bold';
+        }
+
+        function renderEngine() {
+            const isRtl = currentLang === 'ar';
+            const htmlTag = document.getElementById('htmlTag');
+            htmlTag.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+            htmlTag.setAttribute('lang', currentLang);
+            document.getElementById('langBtnText').innerText = isRtl ? "English" : "العربية";
+
+            // بناء المنيو (الوسط)
+            const navContainer = document.getElementById('mainNav');
+            navContainer.innerHTML = '';
+            // عرض الصفحات بترتيب عكسي ليطابق اتجاه الـ flex باللغة العربية
+            let displayPages = [...sitePages];
+            if(isRtl) displayPages.reverse();
+            
+            displayPages.forEach(page => {
+                navContainer.innerHTML += `
+                    <button onclick="navigateTo('${page.id}')" class="text-slate-300 hover:text-amber-400 transition text-sm font-semibold mx-3">
+                        ${isRtl ? page.menuAr : page.menuEn}
+                    </button>
+                `;
+            });
+
+            // بناء المحتوى (البطاقة البيضاء المتطابقة تماماً مع الصورة)
+            const pagesContainer = document.getElementById('pagesContainer');
+            const activeSection = document.querySelector('.page-section.active')?.id || `section_${sitePages[0]?.id}`;
+            pagesContainer.innerHTML = '';
+
+            sitePages.forEach(page => {
+                let researchListHtml = '';
+                if(page.id === 'home' && scientificResearch.length > 0) {
+                    researchListHtml = `<div class="mt-8 pt-6 border-t border-gray-100 text-right"><h3 class="font-bold text-slate-900 mb-4 text-base">الأبحاث والدراسات المضافة حديثاً:</h3><div class="grid gap-4">`;
+                    scientificResearch.forEach(res => {
+                        researchListHtml += `
+                            <div class="bg-slate-50 p-4 rounded border-r-4 border-amber-500">
+                                <h4 class="font-bold text-slate-900 text-sm admin-editable" contenteditable="${isAdminAuthenticated}" onblur="updateResearchLive('${res.id}', 'titleAr', this.innerText)">${res.titleAr}</h4>
+                                <p class="text-xs text-amber-600 mt-1">الباحث: ${res.authorAr}</p>
+                                <p class="text-xs text-gray-600 mt-2 leading-relaxed">${res.bodyAr}</p>
+                            </div>
+                        `;
+                    });
+                    researchListHtml += `</div></div>`;
+                }
+
+                pagesContainer.innerHTML += `
+                    <section id="section_${page.id}" class="page-section ${`section_${page.id}` === activeSection ? 'active' : ''}">
+                        <!-- القسم العلوي الداكن الفخم من الصورة -->
+                        <div class="bg-[#0f172a] text-white pt-20 pb-24 px-4 text-center">
+                            <div class="max-w-5xl mx-auto flex flex-col items-center">
+                                <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-wide leading-tight admin-editable" 
+                                    contenteditable="${isAdminAuthenticated}" 
+                                    onblur="updatePageLive('${page.id}', '${isRtl ? 'titleAr' : 'titleEn'}', this.innerText)">
+                                    ${isRtl ? page.titleAr : page.titleEn}
+                                </h2>
+                                <div class="w-16 h-1 bg-amber-500 mt-2"></div>
+                            </div>
+                        </div>
+
+                        <!-- البطاقة البيضاء المنبثقة بالأسفل (تطابق الصورة تماماً) -->
+                        <div class="container mx-auto px-4 pb-20 -mt-12 max-w-4xl">
+                            <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl text-center border border-gray-100">
+                                <p class="text-gray-700 text-sm md:text-base leading-relaxed text-justify md:text-center font-normal admin-editable" 
+                                   contenteditable="${isAdminAuthenticated}" 
+                                   onblur="updatePageLive('${page.id}', '${isRtl ? 'bodyAr' : 'bodyEn'}', this.innerText)">
+                                    ${isRtl ? page.bodyAr : page.bodyEn}
+                                </p>
+                                ${researchListHtml}
+                            </div>
+                        </div>
+                    </section>
+                `;
+            });
+
+            renderCmsLists();
+        }
+
+        function updatePageLive(id, field, value) {
+            let page = sitePages.find(p => p.id === id);
+            if(page) { page[field] = value; localStorage.setItem('iti_site_pages', JSON.stringify(sitePages)); }
+        }
+
+        function updateResearchLive(id, field, value) {
+            let res = scientificResearch.find(r => r.id === id);
+            if(res) { res[field] = value; localStorage.setItem('iti_research_data', JSON.stringify(scientificResearch)); }
+        }
+
+        function openAdminDashboard() { document.getElementById('cmsDashboard').classList.remove('hidden'); }
+        function closeAdminDashboard() { document.getElementById('cmsDashboard').classList.add('hidden'); }
+
+        function verifyCmsAuth() {
+            if(document.getElementById('cmsPasswordInput').value === 'ITI2026') {
+                isAdminAuthenticated = true;
+                document.getElementById('cmsAuthZone').classList.add('hidden');
+                document.getElementById('cmsWorkspace').classList.remove('hidden');
+                renderEngine();
+                alert("تم تفعيل وضع المسؤول بنجاح! يمكنك الآن الضغط وتعديل أي نص في الموقع مباشرة.");
+            } else {
+                alert("الرمز السري خاطئ!");
+            }
+        }
+
+        function createNewPageSystem() {
+            const id = document.getElementById('newPageId').value.trim().toLowerCase();
+            const menuAr = document.getElementById('newPageMenuAr').value.trim();
+            const menuEn = document.getElementById('newPageMenuEn').value.trim();
+            const body = document.getElementById('newPageContent').value.trim();
+
+            if(!id || !menuAr || !menuEn) return alert("يرجى تعبئة الخانات!");
+            if(sitePages.some(p => p.id === id)) return alert("المعرف مستخدم مسبقاً!");
+
+            sitePages.push({
+                id, menuEn, menuAr,
+                titleEn: menuEn.toUpperCase(), titleAr: menuAr,
+                bodyEn: body || "Content Draft", bodyAr: body || "محتوى قيد الإعداد"
+            });
+            localStorage.setItem('iti_site_pages', JSON.stringify(sitePages));
+            renderEngine();
+            navigateTo(id);
+            alert("تم إدراج الصفحة الجديدة لشريط التنقل والموقع!");
+        }
+
+        function deletePageSystem(id) {
+            if(id === 'home') return alert("لا يمكن حذف الصفحة الرئيسية!");
+            if(confirm("هل أنت متأكد من حذف الصفحة؟")) {
+                sitePages = sitePages.filter(p => p.id !== id);
+                localStorage.setItem('iti_site_pages', JSON.stringify(sitePages));
+                renderEngine();
+                navigateTo('home');
+            }
+        }
+
+        function createNewResearchSystem() {
+            const titleAr = document.getElementById('resTitleAr').value.trim();
+            const titleEn = document.getElementById('resTitleEn').value.trim();
+            const authorAr = document.getElementById('resAuthorAr').value.trim();
+            const bodyAr = document.getElementById('resBodyAr').value.trim();
+
+            if(!titleAr) return alert("أدخل العنوان!");
+
+            scientificResearch.push({ id: "res_" + Date.now(), titleAr, titleEn, authorAr, bodyAr });
+            localStorage.setItem('iti_research_data', JSON.stringify(scientificResearch));
+            renderEngine();
+            alert("تم نشر البحث بنجاح تحت بطاقة المحتوى بالصفحة الرئيسية!");
+        }
+
+        function deleteResearchSystem(id) {
+            if(confirm("هل تود حذف هذا البحث؟")) {
+                scientificResearch = scientificResearch.filter(r => r.id !== id);
+                localStorage.setItem('iti_research_data', JSON.stringify(scientificResearch));
+                renderEngine();
+            }
+        }
+
+        function renderCmsLists() {
+            const pList = document.getElementById('cmsPagesList');
+            if(pList) {
+                pList.innerHTML = '';
+                sitePages.forEach(p => {
+                    pList.innerHTML += `
+                        <div class="bg-slate-900 text-white px-2 py-1 rounded flex items-center gap-2 text-xs">
+                            <span>${p.menuAr}</span>
+                            ${p.id !== 'home' ? `<button onclick="deletePageSystem('${p.id}')" class="text-red-400 font-bold">×</button>` : ''}
+                        </div>
+                    `;
+                });
+            }
+
+            const rTable = document.getElementById('cmsResearchTableBody');
+            if(rTable) {
+                rTable.innerHTML = '';
+                scientificResearch.forEach(r => {
+                    rTable.innerHTML += `
+                        <tr class="border-b">
+                            <td class="p-2">${r.titleAr}</td>
+                            <td class="p-2 text-center"><button onclick="deleteResearchSystem('${r.id}')" class="text-red-500 font-bold">حذف</button></td>
+                        </tr>
+                    `;
+                });
+            }
+        }
+
+        function exportFullEngineCode() {
+            let fullHtml = document.documentElement.outerHTML;
+            const injectPages = `let sitePages = ${JSON.stringify(sitePages, null, 12)};`;
+            const injectResearch = `let scientificResearch = ${JSON.stringify(scientificResearch, null, 12)};`;
+            
+            fullHtml = fullHtml.replace(/let sitePages = JSON\.parse\(localStorage\.getItem\('iti_site_pages'\)\) \|\| \[[\s\S]*?\];/, injectPages);
+            fullHtml = fullHtml.replace(/let scientificResearch = JSON\.parse\(localStorage\.getItem\('iti_research_data'\)\) \|\| \[[\s\S]*?\];/, injectResearch);
+            
+            alert("تم إخراج الكود المحدث بالكامل! افتح الـ Developer Console (F12) لنسخه وحفظه في GitHub.");
+            console.log(fullHtml);
+        }
+
+        window.onload = function() { renderEngine(); };
+    </script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlTag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITI - Independent Thought Institute For Strategic Studies</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Cairo & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .font-ar { font-family: 'Cairo', sans-serif; }
+        .font-en { font-family: 'Inter', sans-serif; }
+        body { transition: all 0.3s ease; }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+    </style>
+</head>
+<body class="font-en bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+            <!-- Logo Section -->
+            <div class="flex items-center space-x-3 cursor-pointer mb-4 md:mb-0" onclick="navigateTo('home')">
+                <img src="WhatsApp Image 2026-06-17 at 10.07.51 PM.jpeg" alt="ITI Logo" class="w-12 h-12 object-cover rounded bg-white p-0.5">
+                <div class="rtl:mr-3 ltr:ml-3">
+                    <h1 class="text-lg font-bold tracking-wide" id="navTitle">ITI</h1>
+                    <p class="text-xs text-slate-400" id="navSubtitle">Strategic Studies</p>
+                </div>
+            </div>
+            
+            <!-- Navigation & Lang Switcher -->
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <nav class="flex flex-wrap justify-center gap-1 text-xs md:text-sm font-semibold" id="mainNav">
+                    <!-- Nav buttons updated via JS -->
+                </nav>
+                
+                <!-- Language Switcher Button -->
+                <button onclick="toggleLanguage()" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-3 py-1.5 rounded text-xs transition flex items-center gap-1">
+                    <i class="fa-solid fa-earth-americas"></i> <span id="langBtnText">العربية</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dynamic Content Container -->
+    <main class="flex-grow">
+
+        <!-- 1. HOME PAGE -->
+        <section id="home" class="page-section active">
+            <!-- Hero Showcase -->
+            <div class="relative bg-slate-800 text-white py-24 px-4 bg-cover bg-center text-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80');">
+                <div class="max-w-4xl mx-auto flex flex-col items-center">
+                    <img src="WhatsApp Image 2026-06-17 at 10.07.51 PM.jpeg" alt="ITI Large Logo" class="w-24 h-24 object-cover rounded-full bg-white p-1 mb-6 shadow-xl">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight" id="heroTitle">Independent Thought Institute For Strategic Studies</h2>
+                    <p class="text-base md:text-lg text-slate-300 mb-8 max-w-3xl leading-relaxed" id="heroDesc">Dedicated to improvement of the security and governance transitions in stable, fragile, failed and conflict-affected states.</p>
+                    <div class="flex justify-center gap-4">
+                        <button onclick="navigateTo('publications')" class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-6 py-3 rounded font-bold shadow transition text-sm" id="heroBtn1">Publications</button>
+                        <button onclick="navigateTo('about')" class="border border-white hover:bg-white hover:text-slate-900 px-6 py-3 rounded font-bold transition text-sm" id="heroBtn2">About Us</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Focus Summary Section -->
+            <div class="container mx-auto px-4 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-4">
+                        <span class="text-amber-600 font-bold text-xs uppercase tracking-wider" id="focusTag">Gaza, Palestine</span>
+                        <h3 class="text-2xl font-bold text-slate-900" id="focusTitle">Global Multi-Disciplinary Think Tank</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed" id="focusDesc">ITI maintains a global, multi-disciplinary network of researchers, practitioners, and academics specializing in the field of international peace and security.</p>
+                    </div>
+                    <div class="bg-slate-900 text-white p-8 rounded-xl shadow-lg border-l-4 border-amber-500">
+                        <h4 class="font-bold text-lg mb-3 text-amber-400" id="focusBoxTitle">Our Core Mission</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed" id="focusBoxDesc">ITI seeks to enhance the effectiveness of donor assistance and support to security sector programs through research, events, training and direct policy advice to GLOBAL Governments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT US PAGE -->
+        <section id="about" class="page-section container mx-auto px-4 py-16">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2" id="aboutTitle">About ITI</h2>
+                <div class="w-16 h-1 bg-amber-500 mx-auto mb-4"></div>
+                <p class="text-gray-600 text-sm" id="aboutSubtitle">Non-profit, non-partisan institute dedicated to peace and security transitions.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow border max-w-4xl mx-auto space-y-6">
+                <p class="text-gray-700 text-sm leading-relaxed" id="fullAbout1"></p>
+                <p class="text-gray-700 text-sm leading-relaxed" id="fullAbout2"></p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t">
+                    <div class="text-center">
+                        <i class="fa-solid fa-shield-halved text-amber-500 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-sm" id="attr1Title">Security Sector</h4>
+                    </div>
+                    <div class="text-center">
+                        <i class="fa-solid fa-scale-balanced text-amber-500 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-sm" id="attr2Title">Governance</h4>
+                    </div>
+                    <div class="text-center">
+                        <i class="fa-solid fa-globe text-amber-500 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-sm" id="attr3Title">Global Network</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. RESEARCH UNITS PAGE -->
+        <section id="units" class="page-section bg-slate-100 py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-2" id="unitsTitle">Research & Policy Pillars</h2>
+                    <div class="w-16 h-1 bg-amber-500 mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto" id="unitsGrid">
+                    <!-- Dynamic Units -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PUBLICATIONS PAGE -->
+        <section id="publications" class="page-section container mx-auto px-4 py-16">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2" id="pubTitle">Strategic Publications & Policy Briefs</h2>
+                <div class="w-16 h-1 bg-amber-500 mx-auto"></div>
+            </div>
+            <div id="publicationsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Dynamic Publications -->
+            </div>
+        </section>
+
+        <!-- 5. TEAM / EXPERTS PAGE -->
+        <section id="team" class="page-section bg-slate-50 py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-2" id="teamTitle">Global Network Experts</h2>
+                    <div class="w-16 h-1 bg-amber-500 mx-auto"></div>
+                </div>
+                <div id="teamGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <!-- Dynamic Experts -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. EVENTS PAGE -->
+        <section id="events" class="page-section container mx-auto px-4 py-16">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2" id="eventsTitle">Events & Direct Advisory</h2>
+                <div class="w-16 h-1 bg-amber-500 mx-auto"></div>
+            </div>
+            <div id="eventsContainer" class="space-y-4 max-w-4xl mx-auto">
+                <!-- Dynamic Events -->
+            </div>
+        </section>
+
+        <!-- 7. BLOG PAGE -->
+        <section id="blog" class="page-section bg-slate-100 py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-2" id="blogTitle">Strategic Insights & Analysis</h2>
+                    <div class="w-16 h-1 bg-amber-500 mx-auto"></div>
+                </div>
+                <div id="blogContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <!-- Dynamic Blogs -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CONTACT US PAGE -->
+        <section id="contact" class="container mx-auto px-4 py-16 page-section">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2" id="contactTitle">Contact ITI</h2>
+                <div class="w-16 h-1 bg-amber-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
+                <!-- Form -->
+                <div class="bg-white p-6 rounded-xl shadow border">
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4" id="contactForm">
+                        <!-- Filled by JS -->
+                    </form>
+                </div>
+                <!-- Info Section (No Map) -->
+                <div class="bg-slate-900 text-white p-8 rounded-xl shadow flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <h3 class="font-bold text-xl text-amber-400" id="infoTitle">Global Operations</h3>
+                        <div class="space-y-4 text-sm text-slate-300">
+                            <p class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-amber-500"></i> <span id="infoLoc">Gaza, Palestine (Global Digital Network)</span></p>
+                            <p class="flex items-center gap-3"><i class="fa-solid fa-envelope text-amber-500"></i> info@iti-studies.org</p>
+                            <p class="flex items-center gap-3"><i class="fa-solid fa-network-wired text-amber-500"></i> <span id="infoNet">Multi-disciplinary Academic Network</span></p>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-800 pt-4 mt-6 text-xs text-slate-400" id="infoNotice">
+                        ITI operates digitally to manage transitions in stable, fragile, and conflict-affected international ecosystems.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white py-8 border-t border-slate-800">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+            <div class="flex items-center gap-3">
+                <img src="WhatsApp Image 2026-06-17 at 10.07.51 PM.jpeg" alt="ITI Footer Logo" class="w-8 h-8 object-cover rounded bg-white p-0.5">
+                <div>
+                    <p class="font-bold text-sm text-slate-200 mb-0.5">Independent Thought Institute (ITI)</p>
+                    <p id="footerCopy">© 2026 All rights reserved. Strategic Peace & Security Architecture.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 text-base">
+                <a href="#" class="hover:text-amber-500 transition"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="hover:text-amber-500 transition"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-solid fa-envelope transition"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Multilingual Core Javascript Logic -->
+    <script>
+        let currentLang = 'en';
+
+        const languages = {
+            en: {
+                nav: { home: "Home", about: "About ITI", units: "Pillars", publications: "Publications", team: "Experts", events: "Events", blog: "Insights", contact: "Contact Us" },
+                navTitle: "Independent Thought Institute",
+                navSubtitle: "For Strategic Studies (ITI)",
+                heroTitle: "Independent Thought Institute For Strategic Studies",
+                heroDesc: "The Independent Thought Institute for Strategic Studies (ITI) is a non-profit, non-partisan think tank dedicated to improvement of the security and governance transitions in stable, fragile, failed and conflict-affected states in Palestine.",
+                heroBtn1: "Explore Publications", heroBtn2: "Learn More",
+                focusTag: "Based in Gaza, Palestine",
+                focusTitle: "Global Advisory & Multi-disciplinary Ecosystem",
+                focusDesc: "ITI maintains a global, multi-disciplinary network of researchers, practitioners, and academics specializing in the field of international peace and security.",
+                focusBoxTitle: "Donor Assistance Optimization",
+                focusBoxDesc: "ITI seeks to enhance the effectiveness of donor assistance and support to security sector programs through research, events, training and direct policy advice to GLOBAL Governments.",
+                aboutTitle: "About The Institute",
+                aboutSubtitle: "Fostering strategic governance and security intelligence.",
+                fullAbout1: "The Independent Thought Institute for Strategic Studies (ITI) is a non-profit, non-partisan think tank dedicated to improvement of the security and governance transitions in stable, fragile, failed and conflict-affected states in Palestine.",
+                fullAbout2: "Based in Gaza, ITI maintains a global, multi-disciplinary network of researchers, practitioners, and academics specializing in the field of international peace and security. ITI seeks to enhance the effectiveness of donor assistance and support to security sector programs through research, events, training and direct policy advice to GLOBAL Governments.",
+                attr1Title: "Security Transition", attr2Title: "Governance Operations", attr3Title: "Global Policy Network",
+                unitsTitle: "Strategic Fields & Policy Pillars",
+                pubTitle: "Institute Publications & Research Depository",
+                teamTitle: "Heads of Policy & International Advisors",
+                eventsTitle: "Advisory Sessions & Training Programs",
+                blogTitle: "Strategic Intelligence Blog",
+                contactTitle: "Engage with ITI",
+                infoTitle: "Global Digital Operations",
+                infoLoc: "Gaza, Palestine (Global Coordination Desk)",
+                infoNet: "Multi-disciplinary Academic Network",
+                infoNotice: "ITI operates digitally to manage transitions in stable, fragile, and conflict-affected international ecosystems.",
+                footerCopy: "© 2026 ITI. All rights reserved. Non-Profit Think Tank.",
+                form: { name: "Full Name *", email: "Official Email *", msg: "Strategic Inquiry / Message *", btn: "Submit Policy Request" },
+                alerts: { contact: "Thank you. Your strategic inquiry has been submitted successfully.", event: "Registration confirmed for this ITI event." }
+            },
+            ar: {
+                nav: { home: "الرئيسية", about: "عن المعهد", units: "المحاور", publications: "الإصدارات", team: "الخبراء", events: "الفعاليات", blog: "التحليلات", contact: "اتصل بنا" },
+                navTitle: "معهد الفكر المستقل",
+                navSubtitle: "للدراسات الاستراتيجية (ITI)",
+                heroTitle: "معهد الفكر المستقل للدراسات الاستراتيجية (ITI)",
+                heroDesc: "مؤسسة فكرية غير ربحية وغير حيزية مكرسة لتحسين انتقالات الأمن والحوكمة في الدول المستقرة والهشة والفاشلة والمتأثرة بالصراعات في فلسطين.",
+                heroBtn1: "استكشف الإصدارات", heroBtn2: "تعرف علينا",
+                focusTag: "قائم في غزة، فلسطين",
+                focusTitle: "شبكة استشارية عالمية متعددة التخصصات",
+                focusDesc: "يضم المعهد شبكة عالمية متعددة التخصصات من الباحثين والممارسين والأكاديميين المتخصصين في مجال السلم والأمن الدوليين.",
+                focusBoxTitle: "تحسين فاعلية المساعدات",
+                focusBoxDesc: "يسعى المعهد لتعزيز فاعلية مساعدات المانحين ودعم برامج قطاع الأمن من خلال البحوث، والفعاليات، والتدريب، وتقديم المشورة السياسية المباشرة للحكومات العالمية.",
+                aboutTitle: "عن المعهد",
+                aboutSubtitle: "تعزيز الحوكمة الاستراتيجية وبناء المنظومات الأمنية.",
+                fullAbout1: "معهد الفكر المستقل للدراسات الاستراتيجية (ITI) هو مركز أبحاث غير ربحي ومستقل مكرس لتحسين مسارات الانتقال الأمني والحوكمة في الدول المستقرة والهشة والفاشلة والمتأثرة بالنزاعات في فلسطين.",
+                fullAbout2: "يتخذ المعهد من غزة مقراً له، ويحافظ على شبكة عالمية متعددة التخصصات من الباحثين والممارسين والأكاديميين المتخصصين في مجال الأمن والسلم الدوليين. يسعى معهد ITI لتعزيز كفاءة مساعدات المانحين ودعم البرامج الأمنية من خلال البحوث، الفعاليات، التدريب، وتقديم التوصيات السياسية المباشرة للحكومات حول العالم.",
+                attr1Title: "التحول الأمني", attr2Title: "عمليات الحوكمة", attr3Title: "شبكة السياسات الدولية",
+                unitsTitle: "محاور ومجالات البحث الاستراتيجي",
+                pubTitle: "مستودع المنشورات والأوراق السياسية للمعهد",
+                teamTitle: "الهيئة العلمية والمستشارين الدوليين",
+                eventsTitle: "الجلسات الاستشارية والبرامج التدريبية",
+                blogTitle: "المدونة الاستراتيجية والتحليلات المعمقة",
+                contactTitle: "تواصل مع المعهد",
+                infoTitle: "العمليات الرقمية العالمية",
+                infoLoc: "غزة، فلسطين (مكتب التنسيق العالمي)",
+                infoNet: "شبكة أكاديمية متعددة التخصصات",
+                infoNotice: "يعمل المعهد رقمياً لإدارة التحولات وبناء الشراكات في الأنظمة الدولية المستقرة والمتأثرة بالصراعات.",
+                footerCopy: "© 2026 معهد ITI. جميع الحقوق محفوظة. مؤسسة فكرية مستقلة.",
+                form: { name: "الاسم الكامل *", email: "البريد الإلكتروني الرسمي *", msg: "الاستفسار الاستراتيجي أو الرسالة *", btn: "إرسال الطلب الاستشاري" },
+                alerts: { contact: "شكراً لك. تم استلام طلبك الاستشاري بنجاح وسيتواصل معك مكتب السياسات.", event: "تم تأكيد تسجيلك لحضور هذه الفعالية الاستراتيجية." }
+            }
+        };
+
+        const unitsData = [
+            { id: 1, icon: "fa-solid fa-shield-cat", enTitle: "Security Sector Reform", arTitle: "إصلاح قطاع الأمن", enDesc: "Analyzing transitions in fragile and conflict-affected states.", arDesc: "تحليل عمليات الانتقال وبناء المؤسسات الأمنية في البيئات المتأثرة بالصراعات." },
+            { id: 2, icon: "fa-solid fa-handshake-angle", enTitle: "Donor Assistance Strategy", arTitle: "استراتيجيات المساعدات الدولية", enDesc: "Enhancing the efficiency and transparency of global donor funding.", arDesc: "تعزيز كفاءة وشفافية برامج التمويل والدعم الدولي للمؤسسات الناشئة." },
+            { id: 3, icon: "fa-solid fa-scale-unbalanced", enTitle: "Governance & Transition", arTitle: "الحوكمة والتحول الهيكلي", enDesc: "Direct policy advice on sovereign framework design and stability.", arDesc: "تقديم مشورة سياسية مباشرة حول تصميم الأطر السيادية واستقرار النظم الفيدرالية." }
+        ];
+
+        const publicationsData = [
+            { id: 1, enTitle: "Optimizing Security Aid: Post-Conflict Frameworks", arTitle: "تحسين مساعدات قطاع الأمن: أطر ما بعد النزاع", typeEn: "Policy Brief", typeAr: "ورقة سياسات", authorEn: "ITI Global Advisory", authorAr: "الهيئة الاستشارية لـ ITI" },
+            { id: 2, enTitle: "Governance Dynamics in Fragile Ecosystems", arTitle: "ديناميكيات الحوكمة في الأنظمة البيئية والمؤسسية الهشة", typeEn: "Research Paper", typeAr: "ورقة بحثية", authorEn: "Dr. Al-Shammari", authorAr: "د. عبد الله الشمري" }
+        ];
+
+        const teamData = [
+            { id: 1, nameEn: "Prof. Samir Al-Omran", nameAr: "أ.د. سمير العمران", roleEn: "Senior International Security Fellow", roleAr: "كبير زملاء الأمن الدولي", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80" },
+            { id: 2, nameEn: "Dr. Maryam Al-Tamimi", nameAr: "د. مريم التميمي", roleEn: "Governance Transition Advisor", roleAr: "مستشارة التحول المؤسسي والحوكمة", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" }
+        ];
+
+        const eventsData = [
+            { id: 1, dateEn: "July 08, 2026", dateAr: "08 يوليو 2026", titleEn: "Donor Effectiveness in Security Programs Support", titleAr: "مؤتمر كفاءة المانحين في دعم برامج قطاع الأمن", active: true }
+        ];
+
+        const blogData = [
+            { id: 1, authorEn: "ITI Board", authorAr: "هيئة تحرير المعهد", dateEn: "June 2026", dateAr: "يونيو 2026", titleEn: "The Future of Security Transitions in Palestine", titleAr: "مستقبل التحولات الأمنية والبنيوية في فلسطين" }
+        ];
+
+        function navigateTo(sectionId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            const target = document.getElementById(sectionId);
+            if (target) target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            renderApp();
+        }
+
+        function renderApp() {
+            const data = languages[currentLang];
+            const isRtl = currentLang === 'ar';
+            
+            // Set HTML Direction & Fonts
+            const htmlTag = document.getElementById('htmlTag');
+            htmlTag.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+            htmlTag.setAttribute('lang', currentLang);
+            
+            if (isRtl) {
+                document.body.classList.remove('font-en');
+                document.body.classList.add('font-ar');
+                document.getElementById('langBtnText').innerText = "English";
+            } else {
+                document.body.classList.remove('font-ar');
+                document.body.classList.add('font-en');
+                document.getElementById('langBtnText').innerText = "العربية";
+            }
+
+            // Static Strings Update
+            document.getElementById('navTitle').innerText = data.navTitle;
+            document.getElementById('navSubtitle').innerText = data.navSubtitle;
+            document.getElementById('heroTitle').innerText = data.heroTitle;
+            document.getElementById('heroDesc').innerText = data.heroDesc;
+            document.getElementById('heroBtn1').innerText = data.heroBtn1;
+            document.getElementById('heroBtn2').innerText = data.heroBtn2;
+            document.getElementById('focusTag').innerText = data.focusTag;
+            document.getElementById('focusTitle').innerText = data.focusTitle;
+            document.getElementById('focusDesc').innerText = data.focusDesc;
+            document.getElementById('focusBoxTitle').innerText = data.focusBoxTitle;
+            document.getElementById('focusBoxDesc').innerText = data.focusBoxDesc;
+            document.getElementById('aboutTitle').innerText = data.aboutTitle;
+            document.getElementById('aboutSubtitle').innerText = data.aboutSubtitle;
+            document.getElementById('fullAbout1').innerText = data.fullAbout1;
+            document.getElementById('fullAbout2').innerText = data.fullAbout2;
+            document.getElementById('attr1Title').innerText = data.attr1Title;
+            document.getElementById('attr2Title').innerText = data.attr2Title;
+            document.getElementById('attr3Title').innerText = data.attr3Title;
+            document.getElementById('unitsTitle').innerText = data.unitsTitle;
+            document.getElementById('pubTitle').innerText = data.pubTitle;
+            document.getElementById('teamTitle').innerText = data.teamTitle;
+            document.getElementById('eventsTitle').innerText = data.eventsTitle;
+            document.getElementById('blogTitle').innerText = data.blogTitle;
+            document.getElementById('contactTitle').innerText = data.contactTitle;
+            document.getElementById('infoTitle').innerText = data.infoTitle;
+            document.getElementById('infoLoc').innerText = data.infoLoc;
+            document.getElementById('infoNet').innerText = data.infoNet;
+            document.getElementById('infoNotice').innerText = data.infoNotice;
+            document.getElementById('footerCopy').innerText = data.footerCopy;
+
+            // Render Nav Items
+            const navContainer = document.getElementById('mainNav');
+            navContainer.innerHTML = '';
+            Object.keys(data.nav).forEach(key => {
+                navContainer.innerHTML += `
+                    <button onclick="navigateTo('${key}')" class="px-2.5 py-1.5 rounded text-slate-300 hover:text-amber-400 transition hover:bg-slate-800">${data.nav[key]}</button>
+                `;
+            });
+
+            // Render Research Pillars
+            const unitsGrid = document.getElementById('unitsGrid');
+            unitsGrid.innerHTML = '';
+            unitsData.forEach(u => {
+                unitsGrid.innerHTML += `
+                    <div class="bg-white p-6 rounded-lg shadow-sm border text-center">
+                        <div class="text-amber-500 text-3xl mb-3"><i class="${u.icon}"></i></div>
+                        <h4 class="font-bold text-base mb-2 text-slate-900">${isRtl ? u.arTitle : u.enTitle}</h4>
+                        <p class="text-gray-600 text-xs leading-relaxed">${isRtl ? u.arDesc : u.enDesc}</p>
+                    </div>
+                `;
+            });
+
+            // Render Publications
+            const pubContainer = document.getElementById('publicationsContainer');
+            pubContainer.innerHTML = '';
+            publicationsData.forEach(p => {
+                pubContainer.innerHTML += `
+                    <div class="bg-white p-5 rounded-xl shadow border flex flex-col justify-between">
+                        <div>
+                            <span class="bg-slate-900 text-amber-400 font-bold text-[10px] px-2 py-0.5 rounded uppercase">${isRtl ? p.typeAr : p.typeEn}</span>
+                            <h4 class="font-bold text-sm text-slate-900 mt-2 mb-2">${isRtl ? p.arTitle : p.enTitle}</h4>
+                            <p class="text-gray-500 text-xs"><i class="fa-regular fa-user ${isRtl?'ml-1':'mr-1'}"></i>${isRtl ? p.authorAr : p.authorEn}</p>
+                        </div>
+                        <button class="w-full mt-4 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2 rounded transition flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-file-pdf"></i> ${isRtl ? 'تحميل الملخص النظري' : 'Download Brief'}
+                        </button>
+                    </div>
+                `;
+            });
+
+            // Render Team
+            const teamGrid = document.getElementById('teamGrid');
+            teamGrid.innerHTML = '';
+            teamData.forEach(t => {
+                teamGrid.innerHTML += `
+                    <div class="bg-white rounded-xl shadow border p-6 text-center">
+                        <img src="${t.img}" alt="Expert" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-slate-200 mb-3">
+                        <h4 class="font-bold text-base text-slate-900">${isRtl ? t.nameAr : t.nameEn}</h4>
+                        <p class="text-amber-600 text-xs font-semibold">${isRtl ? t.roleAr : t.roleEn}</p>
+                    </div>
+                `;
+            });
+
+            // Render Events
+            const eventsContainer = document.getElementById('eventsContainer');
+            eventsContainer.innerHTML = '';
+            eventsData.forEach(e => {
+                eventsContainer.innerHTML += `
+                    <div class="bg-white border rounded-lg p-4 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="text-center md:text-left rtl:md:text-right">
+                            <span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded font-bold">${isRtl ? 'عبر الإنترنت' : 'DIGITAL'}</span>
+                            <h4 class="font-bold text-sm text-slate-900 mt-1">${isRtl ? e.titleAr : e.titleEn}</h4>
+                            <p class="text-xs text-gray-400 mt-0.5"><i class="fa-regular fa-calendar ${isRtl?'ml-1':'mr-1'}"></i>${isRtl ? e.dateAr : e.dateEn}</p>
+                        </div>
+                        <button onclick="alert('${data.alerts.event}')" class="bg-slate-900 hover:bg-slate-800 text-white text-xs px-4 py-2 rounded font-bold transition">${isRtl ? 'طلب حضور' : 'Request Briefing'}</button>
+                    </div>
+                `;
+            });
+
+            // Render Blog
+            const blogContainer = document.getElementById('blogContainer');
+            blogContainer.innerHTML = '';
+            blogData.forEach(b => {
+                blogContainer.innerHTML += `
+                    <div class="bg-white p-5 rounded-lg shadow-sm border">
+                        <div class="text-gray-400 text-[10px] mb-1 flex justify-between">
+                            <span>${isRtl ? b.authorAr : b.authorEn}</span>
+                            <span>${isRtl ? b.dateAr : b.dateEn}</span>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-900 hover:text-amber-600 transition cursor-pointer">${isRtl ? b.titleAr : b.titleEn}</h4>
+                    </div>
+                `;
+            });
+
+            // Render Contact Form
+            const form = document.getElementById('contactForm');
+            form.innerHTML = `
+                <h3 class="text-lg font-bold mb-4 text-slate-900"><i class="fa-regular fa-paper-plane text-amber-500 ${isRtl?'ml-2':'mr-2'}"></i>${data.contactTitle}</h3>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">${data.form.name}</label>
+                    <input type="text" required class="w-full p-2 border rounded focus:outline-none focus:border-slate-900 text-xs">
+                </div>
+                <div class="mt-3">
+                    <label class="block text-xs font-bold text-gray-700 mb-1">${data.form.email}</label>
+                    <input type="email" required class="w-full p-2 border rounded focus:outline-none focus:border-slate-900 text-xs">
+                </div>
+                <div class="mt-3">
+                    <label class="block text-xs font-bold text-gray-700 mb-1">${data.form.msg}</label>
+                    <textarea rows="3" required class="w-full p-2 border rounded focus:outline-none focus:border-slate-900 text-xs"></textarea>
+                </div>
+                <button type="submit" class="w-full mt-4 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded text-xs transition">${data.form.btn}</button>
+            `;
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            alert(languages[currentLang].alerts.contact);
+            e.target.reset();
+        }
+
+        window.onload = function() {
+            renderApp();
+        };
+    </script>
+</body>
+</html>
